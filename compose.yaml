@@ -1,0 +1,45 @@
+services:
+  user:
+    build:
+      context: .
+      dockerfile: users/Dockerfile.users
+    ports:
+      - "9000:5000"
+    networks:
+      - phamtoan
+  products:
+    build:
+      context: ./products
+      dockerfile: Dockerfile.products
+    ports:
+      - "9001:5000"
+    networks:
+      - phamtoan
+  search:
+    build:
+      context: ./search
+      dockerfile: Dockerfile.search
+    ports:
+      - "9002:5000"
+    networks:
+      - phamtoan
+  orders:
+    build:
+      context: ./orders
+      dockerfile: Dockerfile.order
+    ports:
+      - "9003:5000"
+    networks:
+      - phamtoan
+  logs:
+    build:
+      context: ./logs
+      dockerfile: Dockerfile.logs
+    ports:
+      - "9004:5000"
+    networks:
+      - phamtoan
+
+networks:
+  phamtoan:
+    driver: bridge
